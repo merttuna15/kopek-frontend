@@ -1,28 +1,27 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <customNavbar></customNavbar>
+    <router-view />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from "axios";
+import customNavbar from "./components/NavBar.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  name: "App",
+  components: { customNavbar },
+  created() {
+    this.$store.commit("initializeStore");
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+    const access = this.$store.state.access;
+
+    if (access) {
+      axios.defaults.headers.common["Authorization"] = "JWT" + access;
+    } else {
+      axios.defaults.headers.common["Authorization"] = "";
+    }
+  },
+};
+</script>
