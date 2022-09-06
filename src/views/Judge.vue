@@ -1,11 +1,11 @@
 <template>
-  <NavBar></NavBar>
+  <AppbarVue></AppbarVue>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
+import AppbarVue from '@/components/appbar/Appbar.vue';
 export default {
   name: "judgePage",
-  components: { NavBar },
+  components: { AppbarVue },
 };
 </script>

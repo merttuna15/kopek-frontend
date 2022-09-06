@@ -1,14 +1,24 @@
 <template>
   <div>
-    <NavBar></NavBar>
+    <AppbarVue></AppbarVue>
+    <v-card>
+      <v-layout class="adddog">
+    <v-flex class="mt-4 mb-3">
+      <addDogDialog></addDogDialog>
+    </v-flex>
+  </v-layout>
+  </v-card>
   </div>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
+import AppbarVue from '@/components/appbar/Appbar.vue';
+import addDogDialog from '@/dialog/addDog.vue';
+
+
 export default {
   name: "dogPage",
-  components: { NavBar },
+  components: { AppbarVue, addDogDialog },
 
   data: () => ({
     loading: false,
@@ -24,3 +34,10 @@ export default {
   },
 };
 </script>
+
+<style>
+  .adddog{
+    margin-top: 100px ;
+    margin-left: 100px;
+  }
+</style>

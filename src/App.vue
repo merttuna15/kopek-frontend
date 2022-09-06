@@ -1,17 +1,20 @@
 <template>
   <div>
-    <customNavbar></customNavbar>
+<AppbarVue></AppbarVue>   
+<DrawerVue></DrawerVue>
     <router-view />
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import customNavbar from "./components/NavBar.vue";
+import DrawerVue from '@/components/drawer/Drawer.vue';
+import AppbarVue from '@/components/appbar/Appbar.vue';
+
 
 export default {
   name: "App",
-  components: { customNavbar },
+  components: { AppbarVue, DrawerVue,  },
   created() {
     this.$store.commit("initializeStore");
 
@@ -25,3 +28,7 @@ export default {
   },
 };
 </script>
+
+<style>
+
+  </style>

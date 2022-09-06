@@ -17,6 +17,7 @@
     "vue-axios": "^3.4.1",
     "vue-router": "3.0",
     "vuetify": "^2.6.0",
+    "vuetify-datetime-picker": "^2.1.1",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
