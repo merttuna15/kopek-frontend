@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-navigation-drawer app flat mini-variant permanent expand-on-hover>
+    <v-app>
+    <v-navigation-drawer app flat color="#6CC4A1" mini-variant permanent expand-on-hover>
       <v-list>
         <v-list-item v-for="item in navbarlist" :key="item.route" :to="item.route">
           <v-list-item-icon>
@@ -12,6 +13,7 @@
       <v-btn @click="logOut" text class="logout">
        <v-icon class="logoutIcon">mdi-logout</v-icon>Çıkış Yap</v-btn>
     </v-navigation-drawer>
+  </v-app>
   </div>
 </template>
 

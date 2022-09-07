@@ -1,13 +1,14 @@
 <template>
     <div data-app>
+        <v-app>
         <v-row justify="center">
             <v-dialog v-model="dialog" persistent max-width="900px">
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn class="mx-2" fab dark color="indigo" v-bind="attrs" v-on="on">
-                        <v-icon dark>
-                            mdi-plus
-                        </v-icon>
+                    <v-container class="button">
+                    <v-btn class="mx-2"   dark color="indigo" v-bind="attrs" v-on="on">
+                        Köpek Ekle
                     </v-btn>
+                </v-container>
                 </template>
                 <v-card>
                     <v-card-title>
@@ -30,13 +31,14 @@
                                 <v-container>
                                     <p>Doğum Tarihi*</p>
                                     <div>
-                                        <div class="mb-6">Active picker: <code>{{ activePicker || 'null' }}</code></div>
                                         <v-menu ref="menu" v-model="menu" :close-on-content-click="false"
                                             transition="scale-transition" offset-y min-width="auto">
                                             <template v-slot:activator="{ on, attrs }">
-                                                <v-text-field v-model="pet.birth_date" label="Birthday date"
+                                                <v-col cols="12" sm="6" md="4">
+                                                <v-text-field v-model="pet.birth_date" label="Doğum Tarihi"
                                                     prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on">
                                                 </v-text-field>
+                                            </v-col>
                                             </template>
                                             <v-date-picker v-model="pet.birth_date" :active-picker.sync="activePicker"
                                                 :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
@@ -55,11 +57,14 @@
                                 <v-col cols="12" sm="6" md="4">
                                     <v-text-field label="Irkı" v-model="pet.race" type="name"></v-text-field>
                                 </v-col>
+                                
+                                <!-- HASTALIK -->
                                 <v-col cols="12" sm="6" md="4">
-                                    <v-select @click="getIllness()" :items="getIllness.name" label="Hastalık" v-model="pet.illness" ></v-select>
+                                    <v-select :items="getIllness" @click="getIllness()" label="Hastalık" v-model="pet.illness" ></v-select>
                                 </v-col>
-                                <v-col cols="12" sm="6">
-                                    <v-autocomplete :items="['Elbise', 'Ayakkabı', 'Tasma']" label="Kıyafetler"
+                                
+                                <v-col cols="12" sm="6" md="4">
+                                    <v-autocomplete  @click="getGadget()" :items="[ 'dress', 'shoes', 'collet']" label="Kıyafetler"
                                         v-model="pet.gadget" multiple></v-autocomplete>
                                 </v-col>
                             </v-row>
@@ -78,6 +83,7 @@
                 </v-card>
             </v-dialog>
         </v-row>
+    </v-app>
     </div>
 </template>
 
@@ -88,7 +94,6 @@ export default {
     name: "addDogDialog",
     data() {
         return {
-            activePicker: null,
             date: null,
             menu: false,
             dialog: false,
@@ -104,6 +109,11 @@ export default {
                 gadget: null,
 
             },
+            gadget: {
+                dress: "Elbise",
+                shoes: "Ayakkabı",
+                collet: "Tasma"
+            }
 
         };
     },
@@ -117,8 +127,8 @@ export default {
             axios
                 .post("http://127.0.0.1:8000/api/pet/", this.pet)
                 .then(() => {
-                    console.log(this.pet);
                     this.$router.push("/dog");
+                    
                 })
                 .catch((error) => {
                     console.log(error);
@@ -129,7 +139,12 @@ export default {
         },
         getIllness() {
             axios
-                .get("http://127.0.0.1:8000/api/illness/", "name" )
+                .get("http://127.0.0.1:8000/api/illness/" )
+
+        },
+        getGadget() {
+            axios
+                .get("http://127.0.0.1:8000/api/gadgettype/" )
 
         },
        
@@ -141,4 +156,5 @@ export default {
   .datetime {
       margin-right: 50px;
   }
+
   </style>
