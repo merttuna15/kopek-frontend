@@ -1,24 +1,21 @@
 <template>
   <div>
     <AppbarVue></AppbarVue>
-    <v-card>
-      <v-layout class="adddog">
-    <v-flex class="mt-4 mb-3">
       <addDogDialog></addDogDialog>
-    </v-flex>
-  </v-layout>
-  </v-card>
+      <dogCard></dogCard>
   </div>
 </template>
 
 <script>
 import AppbarVue from '@/components/appbar/Appbar.vue';
 import addDogDialog from '@/dialog/addDog.vue';
+import dogCard from '@/cards/dogCard.vue'
+
 
 
 export default {
   name: "dogPage",
-  components: { AppbarVue, addDogDialog },
+  components: { AppbarVue, addDogDialog, dogCard  },
 
   data: () => ({
     loading: false,
@@ -36,8 +33,5 @@ export default {
 </script>
 
 <style>
-  .adddog{
-    margin-top: 100px ;
-    margin-left: 100px;
-  }
+
 </style>
