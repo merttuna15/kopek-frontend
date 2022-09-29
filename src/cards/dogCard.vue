@@ -3,9 +3,8 @@
     <v-app>
       <v-container>
         <v-data-table :headers="headers" :items="dogs" class="elevation-10">
-          <template v-slot:[`owner.full_name`]="{ owners }">
-            {{ owners.first_name }}
-            {{ owners.last_name }}
+          <template v-slot:[`full_name`]>
+            <slot :name="full_name"></slot>
           </template>
         </v-data-table>
       </v-container>
@@ -21,7 +20,7 @@ export default {
   data() {
     return {
       dogs: [],
-      owners: [{ first_name: "first_name", last_name: "last_name" }],
+      items: [{ first_name: "first_name", last_name: "last_name" }],
       headers: [
         {
           text: "İsim",
