@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-layout>
-      <v-app-bar class="success" flat app>
+      <v-app-bar elevation="10" flat app>
         <v-app-bar-nav-icon
           class="black--text"
           @click.stop="mini = !mini"
@@ -10,7 +10,7 @@
           <span>Köpekler</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn flat @click="logOut()" text color="black">
+        <v-btn @click="logOut()" text color="black">
           <span>Çıkış Yap</span>
           <v-icon right>mdi-logout</v-icon>
         </v-btn>
@@ -19,10 +19,10 @@
       <v-navigation-drawer
         v-model="drawer"
         app
-        class="success"
+        elevation="10"
         :mini-variant.sync="mini"
         permanent
-        flat
+        text
         hide-overlay
       >
         <v-list>

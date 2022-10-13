@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <v-carousel width="600" height="400" class="carousel">
+      <v-carousel width="10" height="400" class="carousel">
         <v-carousel-item
           v-for="(item, i) in items"
           :key="i"
@@ -40,6 +40,7 @@ export default {
 
 <style>
 .carousel {
-  margin-right: 200px;
+  right: 110px;
+  top: 100px;
 }
 </style>

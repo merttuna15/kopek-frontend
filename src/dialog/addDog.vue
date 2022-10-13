@@ -21,19 +21,26 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Renk" v-model="pet.color"> </v-text-field>
+                <v-select
+                  :items="color"
+                  :key="color.name"
+                  item-text="name"
+                  label="Renk"
+                  v-model="pet.color"
+                ></v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field
+                <v-select
+                  :items="size"
+                  :key="pet.size"
+                  item-text="size"
                   label="Boyut"
                   v-model="pet.size"
-                  persistent-hint
-                  required
                 >
-                </v-text-field>
+                </v-select>
               </v-col>
               <v-container>
-                <p>Doğum Tarihi*</p>
+                <p class="ml-2">Doğum Tarihi*</p>
                 <div>
                   <v-menu
                     ref="menu"
@@ -73,17 +80,24 @@
                 </div>
               </v-container>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="Sahibi*"
+                <v-select
+                  :items="owner"
+                  :key="owner.first_name"
+                  item-text="first_name"
+                  label="Sahibi"
                   v-model="pet.owner"
-                  type="name"
-                  required
-                >
-                </v-text-field>
+                ></v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Annesi" v-model="pet.parent" type="name">
-                </v-text-field>
+                <v-select
+                  :items="dog"
+                  :key="pet.name"
+                  item-text="name"
+                  label="Annesi"
+                  v-model="pet.parent"
+                  clearable
+                >
+                </v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
@@ -101,20 +115,50 @@
                     item-text="name"
                     label="Hastalık"
                     v-model="pet.illness"
+                    clearable
                   >
                   </v-select>
                 </v-col>
               </div>
-              <div v-for="gadgettype in gadgettype" :key="gadgettype.name">
+              <!-- <div>
                 <v-col cols="12" sm="6" md="4">
-                  <v-autocomplete
-                    :items="gadgettype.dress"
-                    label="Kıyafetler"
+                  <v-select
+                    :items="gadgettype"
+                    :key="gadgettype.dress"
+                    item-text="dress"
+                    label="Elbise"
                     v-model="pet.gadgettype"
-                    multiple
-                  ></v-autocomplete>
+                    clearable
+                  >
+                  </v-select>
                 </v-col>
               </div>
+              <div>
+                <v-col cols="15" sm="6" md="4">
+                  <v-select
+                    :items="gadgettype"
+                    :key="gadgettype.shoes"
+                    item-text="shoes"
+                    label="Ayakkabı"
+                    v-model="pet.gadgettype"
+                    clearable
+                  >
+                  </v-select>
+                </v-col>
+              </div>
+              <div>
+                <v-col cols="15" sm="6" md="4">
+                  <v-select
+                    :items="gadgettype"
+                    :key="gadgettype"
+                    item-text="collet"
+                    label="Tasma"
+                    v-model="pet.gadgettype"
+                    clearable
+                  >
+                  </v-select>
+                </v-col>
+              </div> -->
             </v-row>
             <p>*Doldurulması zorunlu alandır.</p>
           </v-card-text>
@@ -142,9 +186,14 @@ export default {
     return {
       activePicker: false,
       illness: [],
+      gadgettype: [],
       date: null,
       menu: false,
       dialog: false,
+      dog: [],
+      owner: [],
+      color: [],
+      size: [],
       pet: {
         name: null,
         color: null,
@@ -156,7 +205,6 @@ export default {
         illness: null,
         gadget: null,
       },
-      gadgettype: [],
     };
   },
   watch: {
@@ -164,6 +212,7 @@ export default {
       val && setTimeout(() => (this.activePicker = "YEAR"));
     },
   },
+
   methods: {
     addDog() {
       axios
@@ -174,9 +223,6 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-    },
-    save(date) {
-      this.$refs.menu.save(date);
     },
     getIllness() {
       axios
@@ -198,10 +244,54 @@ export default {
           console.log(error);
         });
     },
+    getDog() {
+      axios
+        .get("http://127.0.0.1:8000/api/pet/", this.dog)
+        .then((response) => {
+          this.dog = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getOwner() {
+      axios
+        .get("http://127.0.0.1:8000/api/owner/", this.owner)
+        .then((response) => {
+          this.owner = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getColor() {
+      axios
+        .get("http://127.0.0.1:8000/api/owner/", this.color)
+        .then((response) => {
+          this.color = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getSize() {
+      axios
+        .get("http://127.0.0.1:8000/api/owner/", this.size)
+        .then((response) => {
+          this.size = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
   mounted() {
     this.getIllness();
     this.getGadget();
+    this.getDog();
+    this.getOwner();
+    this.getSize();
+    this.getColor();
   },
 };
 </script>
