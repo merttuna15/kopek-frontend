@@ -1,19 +1,16 @@
 <template>
   <div>
-    <AppbarVue></AppbarVue>
-    <DrawerVue></DrawerVue>
-    <router-view />
+    <v-app>
+      <router-view />
+    </v-app>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import DrawerVue from "@/components/drawer/Drawer.vue";
-import AppbarVue from "@/components/appbar/Appbar.vue";
 
 export default {
   name: "App",
-  components: { AppbarVue, DrawerVue },
   created() {
     this.$store.commit("initializeStore");
 

@@ -1,27 +1,28 @@
 <template>
   <div class="car">
-    <v-app>
-      <homePageCor></homePageCor>
-    </v-app>
+    <AppbarVue></AppbarVue>
+    <homePageCor></homePageCor>
+    <footer-vue></footer-vue>
   </div>
 </template>
 
 <script>
-import homePageCor from '@/components/carousels/homePageCor';
+import homePageCor from "@/components/carousels/homePageCor";
+import AppbarVue from "@/components/appbar/Appbar.vue";
+import footerVue from "@/components/footer/footer.vue";
 
 export default {
   name: "homePage",
 
-  components: { homePageCor },
-
+  components: { homePageCor, AppbarVue, footerVue },
 };
 </script>
 
 <style>
-  .car{
-    width: 1200px;
-    height: 400px;
-    align-items: center;
-    margin-left: 300px;
-  }
+.car {
+  width: 1200px;
+  height: 400px;
+  align-items: center;
+  margin-left: 300px;
+}
 </style>

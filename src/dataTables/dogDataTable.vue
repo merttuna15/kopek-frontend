@@ -1,14 +1,30 @@
 <template>
   <div>
-    <v-app>
+    <v-col>
       <v-container>
-        <v-data-table :headers="headers" :items="dogs" class="elevation-10">
-          <template v-slot:[`full_name`]>
-            <slot :name="full_name"></slot>
+        <v-card-title>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Arama"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-data-table
+          :headers="headers"
+          :items="dogs"
+          :search="search"
+          class="elevation-10"
+        >
+          <template v-slot:[`item.full_name`]="{ item }">
+            <span>{{
+              item.owner.first_name + " " + item.owner.last_name
+            }}</span>
           </template>
         </v-data-table>
       </v-container>
-    </v-app>
+    </v-col>
   </div>
 </template>
 
@@ -19,8 +35,9 @@ export default {
   name: "dogCard",
   data() {
     return {
+      search: "",
       dogs: [],
-      items: [{ first_name: "first_name", last_name: "last_name" }],
+      // items: [{ first_name: "first_name", last_name: "last_name" }],
       headers: [
         {
           text: "İsim",
@@ -52,3 +69,6 @@ export default {
   },
 };
 </script>
+
+<style>
+</style>

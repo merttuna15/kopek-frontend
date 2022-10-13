@@ -1,21 +1,19 @@
 <template>
   <div>
-    <AppbarVue></AppbarVue>
-      <addDogDialog></addDogDialog>
-      <dogCard></dogCard>
+    <Appbar></Appbar>
+    <dogCard></dogCard>
+    <addDogDialog></addDogDialog>
   </div>
 </template>
 
 <script>
-import AppbarVue from '@/components/appbar/Appbar.vue';
-import addDogDialog from '@/dialog/addDog.vue';
-import dogCard from '@/cards/dogCard.vue'
-
-
+import dogCard from "@/dialog/addDog.vue";
+import addDogDialog from "@/dataTables/dogDataTable.vue";
+import Appbar from "@/components/appbar/Appbar.vue";
 
 export default {
   name: "dogPage",
-  components: { AppbarVue, addDogDialog, dogCard  },
+  components: { dogCard, addDogDialog, Appbar },
 
   data: () => ({
     loading: false,
@@ -33,5 +31,4 @@ export default {
 </script>
 
 <style>
-
 </style>
