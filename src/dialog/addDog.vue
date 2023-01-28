@@ -33,7 +33,7 @@
                 <v-select
                   :items="size"
                   :key="pet.size"
-                  item-text="size"
+                  item-text="name"
                   label="Boyut"
                   v-model="pet.size"
                 >
@@ -82,7 +82,7 @@
               <v-col cols="12" sm="6" md="4">
                 <v-select
                   :items="owner"
-                  :key="owner.first_name"
+                  :key="(owner.first_name, owner.last_name)"
                   item-text="first_name"
                   label="Sahibi"
                   v-model="pet.owner"
@@ -108,7 +108,7 @@
               </v-col>
               <!-- HASTALIK -->
               <div>
-                <v-col cols="12" sm="6" md="4">
+                <v-col cols="1" sm="6" md="12">
                   <v-select
                     :items="illness"
                     :key="illness.name"
@@ -120,45 +120,17 @@
                   </v-select>
                 </v-col>
               </div>
-              <!-- <div>
-                <v-col cols="12" sm="6" md="4">
-                  <v-select
-                    :items="gadgettype"
-                    :key="gadgettype.dress"
-                    item-text="dress"
-                    label="Elbise"
-                    v-model="pet.gadgettype"
-                    clearable
-                  >
-                  </v-select>
-                </v-col>
-              </div>
+
               <div>
-                <v-col cols="15" sm="6" md="4">
-                  <v-select
-                    :items="gadgettype"
-                    :key="gadgettype.shoes"
-                    item-text="shoes"
-                    label="Ayakkabı"
-                    v-model="pet.gadgettype"
-                    clearable
-                  >
-                  </v-select>
-                </v-col>
+                <v-container>
+                  <v-file-input
+                    v-model="pet.image"
+                    hide-input
+                    truncate-length="1"
+                  ></v-file-input>
+                  <span>Fotoğraf ekleyin.</span>
+                </v-container>
               </div>
-              <div>
-                <v-col cols="15" sm="6" md="4">
-                  <v-select
-                    :items="gadgettype"
-                    :key="gadgettype"
-                    item-text="collet"
-                    label="Tasma"
-                    v-model="pet.gadgettype"
-                    clearable
-                  >
-                  </v-select>
-                </v-col>
-              </div> -->
             </v-row>
             <p>*Doldurulması zorunlu alandır.</p>
           </v-card-text>
@@ -204,6 +176,7 @@ export default {
         race: null,
         illness: null,
         gadget: null,
+        image: null,
       },
     };
   },

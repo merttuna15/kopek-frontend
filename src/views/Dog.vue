@@ -2,6 +2,7 @@
   <div>
     <Appbar></Appbar>
     <dogCard></dogCard>
+    <dogs></dogs>
     <addDogDialog></addDogDialog>
     <footerVue></footerVue>
   </div>
@@ -12,10 +13,11 @@ import dogCard from "@/dialog/addDog.vue";
 import addDogDialog from "@/dataTables/dogDataTable.vue";
 import Appbar from "@/components/appbar/Appbar.vue";
 import footerVue from "@/components/footer/footer.vue";
+import dogs from "@/dataTables/dogs.vue";
 
 export default {
   name: "dogPage",
-  components: { dogCard, addDogDialog, Appbar, footerVue },
+  components: { dogCard, addDogDialog, Appbar, footerVue, dogs },
 
   data: () => ({
     loading: false,
