@@ -1,7 +1,7 @@
 <template>
   <div data-app>
     <v-container>
-      <v-dialog max-width="800px">
+      <v-dialog v-model="dialog" max-width="800px">
         <template v-slot:activator="{ on, attrs }">
           <v-btn id="btn" color="primary" dark v-bind="attrs" v-on="on">
             Köpek Ekle
@@ -49,6 +49,7 @@
                     transition="scale-transition"
                     offset-y
                     min-width="auto"
+                    :active-picker="'picker'"
                   >
                     <template v-slot:activator="{ on, attrs }">
                       <v-col cols="12" sm="6" md="4">
@@ -74,7 +75,7 @@
                           .substr(0, 10)
                       "
                       min="1950-01-01"
-                      @change="save"
+                      @change="save, handleChange"
                     ></v-date-picker>
                   </v-menu>
                 </div>
@@ -100,11 +101,15 @@
                 </v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field
+                <v-select
+                  :items="race"
+                  :key="pet.race"
+                  item-text="name"
                   label="Irkı"
                   v-model="pet.race"
-                  type="name"
-                ></v-text-field>
+                  clearable
+                  
+                ></v-select>
               </v-col>
               <!-- HASTALIK -->
               <div>
@@ -139,7 +144,7 @@
             <v-btn color="blue darken-1" text @click="dialog = false">
               İptal
             </v-btn>
-            <v-btn color="blue darken-1" text @click.prevent="addDog">
+            <v-btn color="blue darken-1" text @click.prevent="addDog()">
               Kaydet
             </v-btn>
           </v-card-actions>
@@ -157,8 +162,6 @@ export default {
   data() {
     return {
       activePicker: false,
-      illness: [],
-      gadgettype: [],
       date: null,
       menu: false,
       dialog: false,
@@ -166,6 +169,9 @@ export default {
       owner: [],
       color: [],
       size: [],
+      race: [],
+      illness: [],
+      gadgettype: [],
       pet: {
         name: null,
         color: null,
@@ -187,6 +193,9 @@ export default {
   },
 
   methods: {
+    handleChange() {
+      // handle change logic here
+    },
     addDog() {
       axios
         .post("http://127.0.0.1:8000/api/pet/", this.pet)
@@ -239,7 +248,7 @@ export default {
     },
     getColor() {
       axios
-        .get("http://127.0.0.1:8000/api/owner/", this.color)
+        .get("http://127.0.0.1:8000/api/color/", this.color)
         .then((response) => {
           this.color = response.data;
         })
@@ -249,9 +258,19 @@ export default {
     },
     getSize() {
       axios
-        .get("http://127.0.0.1:8000/api/owner/", this.size)
+        .get("http://127.0.0.1:8000/api/size/", this.size)
         .then((response) => {
           this.size = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    getRace() {
+      axios
+        .get("http://127.0.0.1:8000/api/race/", this.race)
+        .then((response) => {
+          this.race = response.data;
         })
         .catch((error) => {
           console.log(error);
@@ -265,6 +284,8 @@ export default {
     this.getOwner();
     this.getSize();
     this.getColor();
+    this.getRace();
+
   },
 };
 </script>
