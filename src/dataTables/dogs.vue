@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-container class="my-10; mr-5; mt-5">
+ <div>
+    <!-- <v-container class="my-10; mr-5; mt-5">
       <v-layout row wrap>
         <v-flex xs12 sm6 md4 lg3 v-for="dog in dogs" :key="dog.name">
           <v-card
@@ -29,46 +29,46 @@
           </v-card>
         </v-flex>
       </v-layout>
-    </v-container>
-  </div>
+    </v-container> -->
+  </div> 
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "dogsCard",
-  data() {
-    return {
-      owner: [],
-      dogs: [],
-      dog: [],
-    };
-  },
-  methods: {
-    getDog() {
-      axios({
-        method: "get",
-        url: "http://127.0.0.1:8000/api/pet/",
-      }).then((response) => {
-        this.dogs = response.data;
-        console.log(response.data);
-      });
-    },
-    getOwner() {
-      axios({
-        method: "get",
-        url: "http://127.0.0.1:8000/api/owner/",
-      }).then((response) => {
-        this.owner = response.data;
-        console.log(response.data);
-      });
-    },
-  },
-  mounted() {
-    this.getDog();
-    this.getOwner();
-  },
+//   data() {
+//     return {
+//       owner: [],
+//       dogs: [],
+//       dog: [],
+//     };
+//   },
+//   methods: {
+//     getDog() {
+//       axios({
+//         method: "get",
+//         url: "http://127.0.0.1:8000/api/pet/",
+//       }).then((response) => {
+//         this.dogs = response.data;
+//         console.log(response.data);
+//       });
+//     },
+//     getOwner() {
+//       axios({
+//         method: "get",
+//         url: "http://127.0.0.1:8000/api/owner/",
+//       }).then((response) => {
+//         this.owner = response.data;
+//         console.log(response.data);
+//       });
+//     },
+//   },
+//   mounted() {
+//     this.getDog();
+//     this.getOwner();
+//   },
 };
 </script>
 

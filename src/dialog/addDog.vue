@@ -14,125 +14,55 @@
           <v-card-text>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="İsim*"
-                  v-model="pet.name"
-                  required
-                ></v-text-field>
+                <v-text-field label="İsim*" v-model="pet.name" required></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-select
-                  :items="color"
-                  :key="color.name"
-                  item-text="name"
-                  label="Renk"
-                  v-model="pet.color"
-                ></v-select>
+                <v-select  :items="color" :key="color.name" item-text="name" label="Renk" v-model="pet.color"></v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-select
-                  :items="size"
-                  :key="pet.size"
-                  item-text="name"
-                  label="Boyut"
-                  v-model="pet.size"
-                >
+                <v-select :items="size" :key="pet.size" item-text="name" label="Boyut" v-model="pet.size">
                 </v-select>
               </v-col>
               <v-container>
                 <p class="ml-2">Doğum Tarihi*</p>
                 <div>
-                  <v-menu
-                    ref="menu"
-                    v-model="menu"
-                    :close-on-content-click="false"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="auto"
-                    :active-picker="'picker'"
-                  >
+                  <v-menu ref="menu" v-model="menu" :close-on-content-click="false" transition="scale-transition" offset-y
+                    min-width="auto" :active-picker.sync="activePicker">
                     <template v-slot:activator="{ on, attrs }">
                       <v-col cols="12" sm="6" md="4">
-                        <v-text-field
-                          v-model="pet.birth_date"
-                          label="Doğum Tarihi"
-                          prepend-icon="mdi-calendar"
-                          readonly
-                          v-bind="attrs"
-                          v-on="on"
-                        >
+                        <v-text-field v-model="pet.birth_date" label="Doğum Tarihi" prepend-icon="mdi-calendar" readonly
+                          v-bind="attrs" v-on="on">
                         </v-text-field>
                       </v-col>
                     </template>
-                    <v-date-picker
-                      v-model="pet.birth_date"
-                      :active-picker.sync="activePicker"
-                      :max="
-                        new Date(
-                          Date.now() - new Date().getTimezoneOffset() * 60000
-                        )
-                          .toISOString()
-                          .substr(0, 10)
-                      "
-                      min="1950-01-01"
-                      @change="save, handleChange"
-                    ></v-date-picker>
+                    <v-date-picker v-model="pet.birth_date"
+                      :max="new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().substr(0, 10)"
+                      min="1950-01-01" @change="handleChange"></v-date-picker>
                   </v-menu>
                 </div>
               </v-container>
               <v-col cols="12" sm="6" md="4">
-                <v-select
-                  :items="owner"
-                  :key="(owner.first_name, owner.last_name)"
-                  item-text="first_name"
-                  label="Sahibi"
-                  v-model="pet.owner"
-                ></v-select>
+                <v-select :items="owner" :key="(owner.first_name, owner.last_name)" item-text="first_name" label="Sahibi"
+                  v-model="pet.owner"></v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-select
-                  :items="dog"
-                  :key="pet.name"
-                  item-text="name"
-                  label="Annesi"
-                  v-model="pet.parent"
-                  clearable
-                >
+                <v-select :items="dog" :key="pet.name" item-text="name" label="Annesi" v-model="pet.parent" clearable>
                 </v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-select
-                  :items="race"
-                  :key="pet.race"
-                  item-text="name"
-                  label="Irkı"
-                  v-model="pet.race"
-                  clearable
-                  
-                ></v-select>
+                <v-select :items="race" :key="pet.race" item-text="name" label="Irkı" v-model="pet.race"
+                  clearable></v-select>
               </v-col>
-              <!-- HASTALIK -->
               <div>
                 <v-col cols="1" sm="6" md="12">
-                  <v-select
-                    :items="illness"
-                    :key="illness.name"
-                    item-text="name"
-                    label="Hastalık"
-                    v-model="pet.illness"
-                    clearable
-                  >
+                  <v-select :items="illness" :key="illness.name" item-text="name" label="Hastalık" v-model="pet.illness"
+                    clearable>
                   </v-select>
                 </v-col>
               </div>
-
               <div>
                 <v-container>
-                  <v-file-input
-                    v-model="pet.image"
-                    hide-input
-                    truncate-length="1"
-                  ></v-file-input>
+                  <v-file-input v-model="pet.image" hide-input truncate-length="1"></v-file-input>
                   <span>Fotoğraf ekleyin.</span>
                 </v-container>
               </div>
@@ -162,7 +92,6 @@ export default {
   data() {
     return {
       activePicker: false,
-      date: null,
       menu: false,
       dialog: false,
       dog: [],
@@ -192,17 +121,27 @@ export default {
     },
   },
 
+
+
   methods: {
     handleChange() {
       // handle change logic here
     },
     addDog() {
-      axios
-        .post("http://127.0.0.1:8000/api/pet/", this.pet)
-        .then(() => {
+      this.pet.color = this.pet.color.id;
+      this.pet.size = this.pet.size.id;
+      this.pet.owner = this.pet.owner.id;
+      this.pet.race = this.pet.race.id;
+      this.pet.illness = this.pet.illness.id;
+
+      this.pet.parent = this.pet.id || null;
+
+      axios.post("http://127.0.0.1:8000/api/pet/", this.pet)
+        .then(response => {
+          this.pet.pk = response.data.pk; // pk değerini API'den aldığımız değerle güncelle
           this.$router.push("/dog");
         })
-        .catch((error) => {
+        .catch(error => {
           console.log(error);
         });
     },
@@ -285,9 +224,9 @@ export default {
     this.getSize();
     this.getColor();
     this.getRace();
+  }
+}
 
-  },
-};
 </script>
 
 <style>
