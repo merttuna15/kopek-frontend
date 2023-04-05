@@ -17,7 +17,8 @@
                 <v-text-field label="İsim*" v-model="pet.name" required></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-select  :items="color" :key="color.name" item-value="id" item-text="name" label="Renk" v-model="pet.color"></v-select>
+                <v-select :items="color" :key="color.name" item-value="id" item-text="name" label="Renk"
+                  v-model="pet.color"></v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-select :items="size" :key="pet.size" item-text="name" item-value="id" label="Boyut" v-model="pet.size">
@@ -42,27 +43,29 @@
                 </div>
               </v-container>
               <v-col cols="12" sm="6" md="4">
-                <v-select :items="owner" :key="owner.id"  item-value="id" item-text="first_name" label="Sahibi"
+                <v-select :items="owner" :key="owner.id" item-value="id" item-text="first_name" label="Sahibi"
                   v-model="pet.owner"></v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-select :items="dog" :key="pet.parent" item-text="name" item-value="id" label="Annesi" v-model="pet.parent" clearable>
+                <v-select :items="dog" :key="pet.parent" item-text="name" item-value="id" label="Annesi"
+                  v-model="pet.parent" clearable>
                 </v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-select :items="race" :key="pet.race" item-value="id" item-text="name" label="Irkı" v-model="pet.race"
                   clearable></v-select>
               </v-col>
-                <v-col cols="12" sm="6" md="4">
-                <v-select :items="illness" :key="pet.illness" item-text="name" item-value="id" label="Hastalık" v-model="pet.illness" 
-                  clearable></v-select>
-                </v-col>
-              <div>
-                <v-container>
-                  <v-file-input v-model="pet.image" hide-input truncate-length="1"></v-file-input>
-                  <span>Fotoğraf ekleyin.</span>
-                </v-container>
-              </div>
+              <v-col cols="12" sm="6" md="4">
+                <v-select :items="illness" :key="pet.illness" item-text="name" item-value="id" label="Hastalık"
+                  v-model="pet.illness" clearable></v-select>
+              </v-col>
+              <!-- GADGET -->
+              <v-col cols="12" sm="6" md="4">
+                <v-select :items="gadgettype" :key="pet.gadget" item-value="id" label="Kıyafet" v-model="pet.gadget"
+                  clearable item-text="collet">
+
+                </v-select>
+              </v-col>
             </v-row>
             <p>*Doldurulması zorunlu alandır.</p>
           </v-card-text>
@@ -128,13 +131,12 @@ export default {
       this.pet.parent = this.pet.id || null;
       this.pet.illness = this.pet.illness.id
 
-      axios.post("http://127.0.0.1:8000/api/pet/", this.pet)
+      axios.post("http://127.0.0.1:8000/api/pet/", this.pet, { illness: this.pet.illness })
         .then(response => {
           this.pet.pk = response.data.pk; // pk değerini API'den aldığımız değerle güncelle
-          this.$router.push("/dog");
+          location.reload()
         })
         .catch(error => {
-          console.log(this.pet.owner.id)
           console.log(error);
         });
     },
