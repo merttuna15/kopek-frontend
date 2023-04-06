@@ -2,7 +2,7 @@
   <div>
     <v-container class="my-10 mr-5 mt-5">
       <v-layout row wrap>
-        <v-flex xs12 sm6 md4 lg3 v-for="dog in dogs" :key="dog.id">
+        <v-flex xs12 sm6 md4 lg3 v-for="dog in dogs" :key="dog.name">
           <v-card
             color="#A8E890"
             elevation="5"
@@ -14,17 +14,12 @@
               <div>
                 Sahibi: {{ dog.owner.first_name }} {{ dog.owner.last_name }}
               </div>
-              <div>Rengi: {{ dog.color.name }}</div>
-              <div>Boyutu: {{ dog.size.name }}</div>
-              <div>Hastalığı: {{ dog.illness.name }}</div>
+              <div v-if="dog.color">Rengi: {{ dog.color.name }}</div>
+              <div v-if="dog.size">Boyutu: {{ dog.size.name }}</div>
+              <div v-if="dog.illness">Hastalık: {{ dog.illness.name }}</div>
               <div>Doğum Tarihi: {{ dog.birth_date }}</div>
+              <div v-if="dog.parent">Annesi: {{ dog.parent.name }}</div>
             </v-card-text>
-            <v-card-actions>
-              <v-btn text color="black">
-                <v-icon small left>mdi-message</v-icon>
-                <span>incele</span>
-              </v-btn>
-            </v-card-actions>
           </v-card>
         </v-flex>
       </v-layout>
@@ -75,4 +70,5 @@ export default {
   margin-left: 80px;
   font-size: large;
 }
+
 </style>

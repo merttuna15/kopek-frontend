@@ -32,7 +32,7 @@
 import axios from "axios";
 
 export default {
-  name: "dogCard",
+  name: "dogDataTable",
   data() {
     return {
       search: "",

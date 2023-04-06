@@ -21,14 +21,23 @@ export default {
     return {
       items: [
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+          src: "https://listelist.com/wp-content/uploads/2019/07/kopek_manset.jpg",
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+          src: "https://listelist.com/wp-content/uploads/2019/07/kopek_2.jpg",
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+          src: "https://listelist.com/wp-content/uploads/2019/07/kopek_7.jpg",
         },
+        {
+          src: "https://listelist.com/wp-content/uploads/2019/07/kopek_12.jpg"
+        },
+        {
+          src: "https://listelist.com/wp-content/uploads/2019/07/kopek_15.jpg"
+        },
+        {
+          src: "https://listelist.com/wp-content/uploads/2019/07/kopek_21.jpg"
+        }
       ],
     };
   },
@@ -37,7 +46,8 @@ export default {
 
 <style>
 .carousel {
-  right: 110px;
-  top: 100px;
+  margin-top: 110px;
+  align-items: center;
+  justify-content: center;
 }
 </style>

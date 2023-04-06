@@ -231,6 +231,6 @@ export default {
 
 #btn {
   margin-top: 80px;
-  margin-left: 1030px;
+  justify-content: end;
 }
 </style>
