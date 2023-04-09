@@ -44,7 +44,7 @@ export default {
           sortable: false,
           value: "name",
         },
-        { text: "Owner", value: "full_name" },
+        { text: "Sahibi", value: "full_name" },
         { text: "Doğum Tarihi", value: "birth_date" },
         { text: "Renk", value: "color.name" },
         { text: "Boyut", value: "size.name" },

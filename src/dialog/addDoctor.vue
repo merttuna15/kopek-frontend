@@ -84,6 +84,8 @@
         axios.post("http://127.0.0.1:8000/api/doctor/", this.doctor)
           .then(response => {
             this.doctor.pk = response.data.pk; // pk değerini API'den aldığımız değerle güncelle
+          location.reload()
+
           })
           .catch(error => {
             console.log(error);

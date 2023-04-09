@@ -63,7 +63,6 @@
               <v-col cols="12" sm="6" md="4">
                 <v-select :items="gadgettype" :key="pet.gadget" item-value="id" label="Kıyafet" v-model="pet.gadget"
                   clearable item-text="collet">
-
                 </v-select>
               </v-col>
             </v-row>
@@ -111,7 +110,6 @@ export default {
         race: null,
         illness: null,
         gadget: null,
-        image: null,
       },
     };
   },
