@@ -13,13 +13,10 @@
           </v-card-title>
           <v-data-table
             :headers="headers"
-            :items="judge"
+            :items="illnesstype"
             :search="search"
             class="elevation-10"
           >
-            <template v-slot:[`item.full_name`]="{ item }">
-              <span>{{ item.full_name }}</span>
-            </template>
           </v-data-table>
         </v-container>
       </v-col>
@@ -30,38 +27,36 @@
   import axios from "axios";
   
   export default {
-    name: "judgeDataTable",
+    name: "illnessTypeTable",
     data() {
       return {
         search: "",
-        judge: [],
+        illnesstype: [],
         headers: [
-          { text: "İsim", align: "start", sortable: false, value: "full_name" },
-          { text: "Doğum Tarihi", value: "birth_date" },
-          { text: "Telefon No.", value: "phone" },
-          { text: "E-posta", value: "email" },
+          {
+            text: "Hastalık Tipi",
+            align: "start",
+            sortable: false,
+            value: "name",
+          },
         ],
       };
     },
     methods: {
-      getJudge() {
+      getIllnessType() {
         axios({
           method: "get",
-          url: "http://127.0.0.1:8000/api/judge/",
+          url: "http://127.0.0.1:8000/api/illnesstype/",
         }).then((response) => {
-          this.judge = response.data.map((d) => ({
-            ...d,
-            full_name: `${d.first_name} ${d.last_name}`,
-          }));
+          this.illnesstype = response.data;
         });
       },
     },
     mounted() {
-      this.getJudge();
+      this.getIllnessType();
     },
   };
   </script>
   
   <style>
   </style>
-  

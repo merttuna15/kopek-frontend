@@ -2,24 +2,21 @@
   <div>
     <v-container class="my-10 mr-5 mt-5">
       <v-layout row wrap>
-        <v-flex xs12 sm6 md4 lg3 v-for="dog in dogs" :key="dog.name">
-          <v-card
-            color="#A8E890"
-            elevation="5"
-            flat
-            :class="{ 'text-xs-center': true, 'ma-3': true }"
-          >
-            <v-container class="name">{{ dog.name }}</v-container>
-            <v-card-text>
-              <div>
-                Sahibi: {{ dog.owner.first_name }} {{ dog.owner.last_name }}
-              </div>
-              <div v-if="dog.color">Rengi: {{ dog.color.name }}</div>
-              <div v-if="dog.size">Boyutu: {{ dog.size.name }}</div>
-              <div v-if="dog.illness">Hastalık: {{ dog.illness.name }}</div>
-              <div>Doğum Tarihi: {{ dog.birth_date }}</div>
-              <div v-if="dog.parent">Annesi: {{ dog.parent.name }}</div>
-            </v-card-text>
+        <v-flex xs12 md6 lg4 v-for="dog in dogs" :key="dog.id">
+          <v-card color="#A8E890" elevation="5" flat :class="{ 'text-xs-center': true, 'ma-3': true }">
+            <v-card-title>{{ dog.name }}</v-card-title>
+            <v-container>
+              <v-card-text>
+                <div>
+                  Sahibi: {{ dog.owner.first_name }} {{ dog.owner.last_name }}
+                </div>
+                <div v-if="dog.color">Rengi: {{ dog.color.name }}</div>
+                <div v-if="dog.size">Boyutu: {{ dog.size.name }}</div>
+                <div v-if="dog.illness">Hastalık: {{ dog.illness.name }}</div>
+                <div>Doğum Tarihi: {{ dog.birth_date }}</div>
+                <div v-if="dog.parent">Annesi: {{ dog.parent.name }}</div>
+              </v-card-text>
+            </v-container>
           </v-card>
         </v-flex>
       </v-layout>
@@ -70,5 +67,4 @@ export default {
   margin-left: 80px;
   font-size: large;
 }
-
 </style>

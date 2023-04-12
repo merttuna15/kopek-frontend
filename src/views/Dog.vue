@@ -1,23 +1,27 @@
 <template>
   <div>
     <Appbar></Appbar>
-    <dogCard></dogCard>
-    <dogsCard></dogsCard>
+    <v-row>
     <addDogDialog></addDogDialog>
+    <addPetChallengeDialog></addPetChallengeDialog>
+  </v-row>
+  <dogsCard></dogsCard>
+  <dogDataTable></dogDataTable>
     <footerVue></footerVue>
   </div>
 </template>
 
 <script>
-import dogCard from "@/dialog/addDog.vue";
-import addDogDialog from "@/dataTables/dogDataTable.vue";
+import addDogDialog from "@/dialog/addDog.vue";
+import dogDataTable from "@/dataTables/dogDataTable.vue";
 import Appbar from "@/components/appbar/Appbar.vue";
 import footerVue from "@/components/footer/footer.vue";
 import dogsCard from "@/card/dogs.vue";
+import addPetChallengeDialog from "@/dialog/addPetChallenge.vue"
 
 export default {
   name: "dogPage",
-  components: { dogCard, addDogDialog, Appbar, footerVue, dogsCard },
+  components: { addDogDialog, Appbar, footerVue, dogsCard, addPetChallengeDialog, dogDataTable },
 
   data: () => ({
     loading: false,

@@ -9,8 +9,11 @@ import Dog from '../views/Dog'
 import Hospital from '../views/Hospital'
 import Judge from '../views/Judge'
 import Profile from '../views/Profile'
-
-
+import Feature from '@/views/Feature'
+import Country from '@/views/Country'
+import City from '@/views/City'
+import Branch from '@/views/Branch'
+import Illness from '@/views/Illness'
 
 
 Vue.use(Router);
@@ -66,6 +69,31 @@ export default new Router({
       path: '/profile',
       name: 'Profile',
       component: Profile,
-    }
+    }, 
+    {
+      path: '/feature',
+      name: 'Feature',
+      component: Feature,
+    },
+    {
+      path: '/country',
+      name: 'Country',
+      component: Country,
+    },
+    {
+      path: '/city',
+      name: 'City',
+      component: City,
+    },
+    {
+      path: '/branch',
+      name: 'Branch',
+      component: Branch,
+    },
+    {
+      path: '/illness',
+      name: 'Illness',
+      component: Illness,
+    },
   ]
 });
