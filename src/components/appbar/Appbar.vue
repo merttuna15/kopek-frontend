@@ -1,9 +1,9 @@
 <template>
   <div>
     <v-layout>
-      <v-app-bar elevation="10" flat app>
+      <v-app-bar elevation="10" color="#9DC08B" flat app>
         <v-app-bar-nav-icon
-          class="black--text"
+          class="black--text" 
           @click.stop="mini = !mini"
         ></v-app-bar-nav-icon>
         <v-toolbar-title class="text-uppercase black--text">
@@ -24,6 +24,7 @@
         permanent
         text
         hide-overlay
+        color="#9DC08B"
       >
         <v-list>
           <v-list-item

@@ -2,9 +2,9 @@
     <div>
       <v-container class="my-10 mr-5 mt-5">
         <v-layout row wrap>
-          <v-flex xs12 sm6 md4 lg3 v-for="doctor in doctors" :key="doctor.first_name">
+          <v-flex xs10 sm5 md4 lg2 v-for="doctor in doctors" :key="doctor.first_name">
             <v-card
-              color="#A8E890"
+              color="#9DC08B"
               elevation="5"
               flat
               :class="{ 'text-xs-center': true, 'ma-3': true }"

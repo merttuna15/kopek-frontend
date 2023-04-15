@@ -13,7 +13,7 @@
           </v-card-title>
           <v-data-table
             :headers="headers"
-            :items="country"
+            :items="petillness"
             :search="search"
             class="elevation-10"
             style="background-color: #F2E3DB;"
@@ -28,33 +28,35 @@
   import axios from "axios";
   
   export default {
-    name: "countryTable",
+    name: "petIllnessDataTable",
     data() {
       return {
         search: "",
-        country: [],
+        petillness: [],
         headers: [
           {
-            text: "İsim",
+            text: "Köpeğin Adı",
             align: "start",
             sortable: false,
-            value: "name",
+            value: "pet.name",
           },
+          { text: "Hastalık Tipi", value: "type.name" },
+          { text: "Hastalığın Kategorisi", value: "category" },
         ],
       };
     },
     methods: {
-      getCountry() {
+      getPetIllness() {
         axios({
           method: "get",
-          url: "http://127.0.0.1:8000/api/country/",
+          url: "http://127.0.0.1:8000/api/petillness/",
         }).then((response) => {
-          this.country = response.data;
+          this.petillness = response.data;
         });
       },
     },
     mounted() {
-      this.getCountry();
+      this.getPetIllness();
     },
   };
   </script>

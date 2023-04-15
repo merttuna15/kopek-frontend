@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
       <AppbarVue></AppbarVue>
       <footer-vue></footer-vue>
       <addBranchDialog></addBranchDialog>

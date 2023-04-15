@@ -3,20 +3,18 @@
       <v-container>
         <v-dialog v-model="dialog" max-width="800px">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn id="btn" color="" dark v-bind="attrs" v-on="on">
+            <v-btn id="btn" style="background-color: #263A29;" dark v-bind="attrs" v-on="on">
              Boyut Ekle
             </v-btn>
           </template>
-          <v-card>
+          <v-card style="background-color: #F2E3DB;">
             <v-card-title>
               <span class="text-h5">Boyut Bilgileri</span>
             </v-card-title>
             <v-card-text>
-              <v-row>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field label="İsim*" v-model="size.name" required></v-text-field>
+                  <v-text-field label="İsim*" v-model="size.name" outlined  required></v-text-field>
                 </v-col>
-              </v-row>
               <p>*Doldurulması zorunlu alandır.</p>
             </v-card-text>
             <v-card-actions>

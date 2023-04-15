@@ -5,9 +5,11 @@
       <v-row class="row">
       <addIllnessTypeDialog></addIllnessTypeDialog>
       <addIllnessDialog></addIllnessDialog>
+      <addPetIllnessDialog></addPetIllnessDialog>
     </v-row>
     <illnessTypeTable></illnessTypeTable>
     <illnessTable></illnessTable>
+    <petIllnessDataTable></petIllnessDataTable>
     </div>
   </template>
   
@@ -18,13 +20,14 @@
   import addIllnessDialog from "@/dialog/addIllness.vue";
   import illnessTypeTable from "@/dataTables/illnesstypeDataTable.vue";
   import illnessTable from "@/dataTables/illnessDataTable.vue";
-
+  import addPetIllnessDialog from "@/dialog/addPetIllness.vue"
+  import petIllnessDataTable from "@/dataTables/petIllnessDataTable.vue"
 
   
   export default {
     name: "IllnessPage",
   
-    components: { AppbarVue, footerVue, addIllnessTypeDialog, addIllnessDialog, illnessTypeTable, illnessTable},
+    components: { AppbarVue, footerVue, addIllnessTypeDialog, addIllnessDialog, illnessTypeTable, illnessTable, addPetIllnessDialog, petIllnessDataTable},
   };
   </script>
   

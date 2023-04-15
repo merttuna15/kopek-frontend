@@ -5,7 +5,7 @@
         <v-card-title>
           <v-text-field v-model="search" append-icon="mdi-magnify" label="Arama" single-line hide-details></v-text-field>
         </v-card-title>
-        <v-data-table :headers="headers" :items="challenge" :search="search" class="elevation-10">
+        <v-data-table :headers="headers" :items="challenge" :search="search" class="elevation-10" style="background-color: #F2E3DB;">
           <template v-slot:[`item.full_name`]="{ item }">
             <div>
               <span v-for="(judge, index) in item.judge" :key="index">

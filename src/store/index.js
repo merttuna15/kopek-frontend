@@ -4,47 +4,52 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
-
 axios.defaults.xsrfCookieName = "csrftoken";
 axios.defaults.xsrfHeaderName = "X-CSRFToken";
 
 const store = new Vuex.Store({
-    state:{
-        access:'',
-        refresh:''
+  state: {
+    access: "",
+    refresh: "",
+  },
+  mutations: {
+    setAccess(state, access) {
+      state.access = access;
     },
-    mutations:{
-        initializeStore(state) {
-            if( localStorage.getItem('access')){
-                state.access = localStorage.getItem('access')
-            }
-            else{
-                state.access = ''
-            } 
-        },
-        setAccess(state, access){
-            state.access = access
-        },
-       
-        
+    setRefresh(state, refresh) {
+      state.refresh = refresh;
     },
-    actions: {
-        updateToken (state, payload) {
-            state.access = payload.access;
-            state.refresh = payload.refresh;
-            localStorage.setItem('access', payload.access)
-            localStorage.setItem('refresh', payload.refresh)
+    initializeStore(state) {
+      if (localStorage.getItem("access")) {
+        state.access = localStorage.getItem("access");
+      }
+      if (localStorage.getItem("refresh")) {
+        state.refresh = localStorage.getItem("refresh");
+      }
+    },
+  },
+  actions: {
+    updateToken({ commit }, payload) {
+      commit("setAccess", payload.access);
+      commit("setRefresh", payload.refresh);
+      localStorage.setItem("access", payload.access);
+      localStorage.setItem("refresh", payload.refresh);
+    },
+    logOut({ commit }) {
+      commit("setAccess", "");
+      commit("setRefresh", "");
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+    },
+  },
+  getters: {
+    isLoggedIn: (state) => !!state.access,
+    accessToken: (state) => state.access,
+    refreshToken: (state) => state.refresh,
+  },
+  modules: {},
+});
 
-        },
-        logOut (state) {
-            state.access = null
-            state.refresh = null
-            localStorage.removeItem('access')
-            localStorage.removeItem('refresh')
-        }
-    },
-    modules: {
-        
-    }
-})
+store.commit("initializeStore");
+
 export default store;

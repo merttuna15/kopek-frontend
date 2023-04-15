@@ -3,36 +3,36 @@
       <v-container>
         <v-dialog v-model="dialog" max-width="800px">
           <template v-slot:activator="{ on, attrs }">
-            <v-btn id="btn" color="" dark v-bind="attrs" v-on="on">
+            <v-btn id="btn" style="background-color: #263A29;" dark v-bind="attrs" v-on="on">
               Doktor Ekle
             </v-btn>
           </template>
-          <v-card>
+          <v-card style="background-color: #F2E3DB;">
             <v-card-title>
               <span class="text-h5">Doktor Bilgileri</span>
             </v-card-title>
             <v-card-text>
               <v-row>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field label="İsim*" v-model="doctor.first_name" required></v-text-field>
+                  <v-text-field label="İsim*" v-model="doctor.first_name" outlined  required></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field label="Soyisim*"  v-model="doctor.last_name" required></v-text-field>
+                  <v-text-field label="Soyisim*"  v-model="doctor.last_name" required outlined ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                  <v-text-field label="Telefon No.*" type="number" v-model="doctor.phone" pattern="[0-9]*"  required></v-text-field>
+                  <v-text-field label="Telefon No.*" type="number" v-model="doctor.phone" pattern="[0-9]*"  required outlined ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
-                    <v-text-field label="E-mail" type="email" v-model="doctor.email"  required></v-text-field>
+                    <v-text-field label="E-mail" type="email" v-model="doctor.email"  required outlined ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-select :items="branch" item-text="name" item-value="id" label="Branş" v-model="doctor.branch"
-                     clearable>
+                     clearable outlined >
                   </v-select>
                 </v-col>
                 <v-col cols="12" sm="6" md="4">
                   <v-select :items="hospital"  item-value="id" item-text="name" label="Hastane" v-model="doctor.hospital"
-                    clearable></v-select>
+                    clearable outlined ></v-select>
                 </v-col>
               </v-row>
               <p>*Doldurulması zorunlu alandır.</p>

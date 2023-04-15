@@ -3,25 +3,26 @@
     <v-container>
       <v-dialog v-model="dialog" max-width="800px">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn id="btn" color="primary" dark v-bind="attrs" v-on="on">
+          <v-btn id="btn" style="background-color: #263A29;" dark v-bind="attrs" v-on="on">
             Köpek Ekle
           </v-btn>
         </template>
-        <v-card>
+        <v-card style="background-color: #F2E3DB;">
           <v-card-title>
             <span class="text-h5">Hayvan Bilgileri</span>
           </v-card-title>
           <v-card-text>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="İsim*" v-model="pet.name" required></v-text-field>
+                <v-text-field label="İsim*" v-model="pet.name" required outlined></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-select :items="color" :key="color.name" item-value="id" item-text="name" label="Renk"
-                  v-model="pet.color"></v-select>
+                  v-model="pet.color" outlined></v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
-                <v-select :items="size" :key="pet.size" item-text="name" item-value="id" label="Boyut" v-model="pet.size">
+                <v-select :items="size" :key="pet.size" item-text="name" item-value="id" label="Boyut" v-model="pet.size"
+                  outlined>
                 </v-select>
               </v-col>
               <v-container>
@@ -44,25 +45,27 @@
               </v-container>
               <v-col cols="12" sm="6" md="4">
                 <v-select :items="owner" :key="owner.id" item-value="id" item-text="first_name" label="Sahibi"
-                  v-model="pet.owner"></v-select>
+                  v-model="pet.owner" outlined></v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-select :items="dog" :key="pet.parent" item-text="name" item-value="id" label="Annesi"
-                  v-model="pet.parent" clearable>
+                  v-model="pet.parent" clearable outlined>
                 </v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-select :items="race" :key="pet.race" item-value="id" item-text="name" label="Irkı" v-model="pet.race"
-                  clearable></v-select>
+                  clearable outlined></v-select>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-select :items="illness" :key="pet.illness" item-text="name" item-value="id" label="Hastalık"
-                  v-model="pet.illness" clearable></v-select>
+                  v-model="pet.illness" clearable outlined></v-select>
               </v-col>
-              <!-- GADGET -->
               <v-col cols="12" sm="6" md="4">
                 <v-select :items="gadgettype" :key="pet.gadget" item-value="id" label="Kıyafet" v-model="pet.gadget"
-                  clearable item-text="collet">
+                  clearable outlined>
+                  <template #item="{ item }">
+                    <div>{{ item.collet }}, {{ item.dress }}, {{ item.shoes }}</div>
+                  </template>
                 </v-select>
               </v-col>
             </v-row>

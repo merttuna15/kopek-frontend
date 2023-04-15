@@ -6,7 +6,6 @@
           <v-col cols="12" sm="8" md="4" lg="4">
             <v-card class="card pt-6 px-12">
               <v-card-text>
-                <img class="img" src="@/assets/dog.avif" />
                 <v-form @submit.prevent="submitForm">
                   <v-text-field
                     v-model="credentials.username"
@@ -16,6 +15,8 @@
                     type="name"
                     class="rounded-0"
                     outlined
+                    required
+                    dark
                   ></v-text-field>
                   <v-text-field
                     v-model="credentials.name"
@@ -25,6 +26,8 @@
                     type="name"
                     class="rounded-0"
                     outlined
+                    required
+                    dark
                   ></v-text-field>
                   <v-text-field
                     v-model="credentials.email"
@@ -34,6 +37,8 @@
                     type="email"
                     class="rounded-0"
                     outlined
+                    required
+                    dark
                   ></v-text-field>
                   <v-text-field
                     v-model="credentials.password"
@@ -43,6 +48,8 @@
                     type="password"
                     class="rounded-0"
                     outlined
+                    required
+                    dark
                   ></v-text-field>
                   <v-btn
                     class="rounded-0"
@@ -55,8 +62,8 @@
                   >
                   <v-card-actions class="text--secondary">
                     <v-spacer></v-spacer>
-                    Hesabınız var mı?
-                    <a class="pl-2" style="#000" @click="$router.push('/login')"
+                    <a style="color: white;"> Hesabınız var mı?</a>
+                    <a class="pl-2"   @click="$router.push('/login')"
                       >Giriş yap</a
                     >
                   </v-card-actions>
@@ -82,6 +89,8 @@ export default {
         password: null,
         name: null,
         email: null,
+        is_active: true,
+
       },
     };
   },
@@ -111,12 +120,12 @@ export default {
 }
 
 .register {
-  background: url("@/assets/color.png");
+  background: url("@/assets/playingdogs.jpg");
   background-size: cover;
   height: 100vh;
 }
 
 .card {
-  background-color: #ede6db;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 </style>

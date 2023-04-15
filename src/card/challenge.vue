@@ -2,8 +2,8 @@
     <div>
         <v-container class="my-10 mr-5 mt-5">
             <v-layout row wrap>
-                <v-flex xs12 sm6 md4 lg3 v-for="challenge in challenges" :key="challenge.name">
-                    <v-card color="#A8E890" elevation="5" flat :class="{ 'text-xs-center': true, 'ma-3': true }">
+                <v-flex xs10 sm5 md4 lg2 v-for="challenge in challenges" :key="challenge.name">
+                    <v-card color="#9DC08B" elevation="5" flat :class="{ 'text-xs-center': true, 'ma-3': true }">
                         <v-container class="name">{{ challenge.name }}</v-container>
                         <v-card-text>
                             <p v-if="challenge.address">Adres: {{ challenge.address }}</p>

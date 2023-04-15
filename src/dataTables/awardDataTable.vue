@@ -16,6 +16,7 @@
             :items="award"
             :search="search"
             class="elevation-10"
+            style="background-color: #F2E3DB;"
           >
           </v-data-table>
         </v-container>

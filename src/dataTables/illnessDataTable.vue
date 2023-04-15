@@ -6,7 +6,7 @@
                     <v-text-field v-model="search" append-icon="mdi-magnify" label="Arama" single-line
                         hide-details></v-text-field>
                 </v-card-title>
-                <v-data-table :headers="headers" :items="illness" :search="search" class="elevation-10">
+                <v-data-table :headers="headers" :items="illness" :search="search" class="elevation-10" style="background-color: #F2E3DB;">
                 </v-data-table>
             </v-container>
         </v-col>

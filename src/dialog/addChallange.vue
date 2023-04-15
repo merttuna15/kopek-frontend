@@ -3,33 +3,33 @@
         <v-container>
             <v-dialog v-model="dialog" max-width="800px">
                 <template v-slot:activator="{ on, attrs }">
-                    <v-btn id="btn" dark v-bind="attrs" v-on="on">
+                    <v-btn id="btn" style="background-color: #263A29;" dark  v-bind="attrs" v-on="on">
                         Yarışma Ekle
                     </v-btn>
                 </template>
-                <v-card>
+                <v-card style="background-color: #F2E3DB;">
                     <v-card-title>
                         <span class="text-h5">Yarışma Bilgileri</span>
                     </v-card-title>
                     <v-card-text>
                         <v-row>
                             <v-col cols="12" sm="6" md="4">
-                                <v-text-field label="Yarışma Adı*" v-model="challenge.name" required></v-text-field>
+                                <v-text-field label="Yarışma Adı*" v-model="challenge.name" outlined  required></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="6" md="4">
-                                <v-text-field label="Adres*" v-model="challenge.address" required></v-text-field>
+                                <v-text-field label="Adres*" v-model="challenge.address" required outlined ></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="6" md="4">
                                 <v-select :items="city" item-value="id" item-text="name" label="Şehir"
-                                    v-model="challenge.city" clearable></v-select>
+                                    v-model="challenge.city" clearable outlined ></v-select>
                             </v-col>
                             <v-col cols="12" sm="6" md="4">
                                 <v-select :items="city" item-value="id" item-text="name" label="Ülke"
-                                    v-model="challenge.country" clearable></v-select>
+                                    v-model="challenge.country" clearable outlined ></v-select>
                             </v-col>
                             <v-col cols="12" sm="6" md="4">
                                 <v-select :items="judge" item-value="id" item-text="full_name" label="Hakemler*"
-                                    v-model="challenge.judge" clearable multiple>
+                                    v-model="challenge.judge" clearable outlined  multiple>
                                     <template v-slot:item="{ item }">
                                         <span>{{ item.full_name }}</span>
                                     </template>
@@ -37,7 +37,7 @@
                             </v-col>
                             <v-col cols="12" sm="6" md="4">
                                 <v-select :items="pet" item-value="id" item-text="name" label="Katılan Hayvanlar"
-                                    v-model="challenge.pet" clearable multiple>
+                                    v-model="challenge.pet" outlined  clearable multiple>
                                 </v-select>
                             </v-col>
                         </v-row>
