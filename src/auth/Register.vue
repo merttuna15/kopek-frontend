@@ -87,19 +87,15 @@ export default {
       credentials: {
         username: null,
         password: null,
-        name: null,
         email: null,
-        is_active: true,
-
+        name: null,
       },
     };
   },
   methods: {
     registerForm() {
       axios
-        .post("http://127.0.0.1:8000/user/register/", {
-          ...this.credentials,
-        })
+        .post("http://127.0.0.1:8000/api/v1/users/", this.credentials)
         .then((response) => {
           console.log(response);
           this.$router.push("/login");

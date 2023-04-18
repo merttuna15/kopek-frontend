@@ -17,7 +17,7 @@
                     </v-btn>
                     <v-card-actions class="text--white">
                       <v-spacer></v-spacer>
-                      Hesabınız yok mu?
+                      <a style="color: white;"> Hesabınız yok mu? </a>
                       <a class="pl-2" style="#000" @click="$router.push('/register')">Kayıt ol</a>
                     </v-card-actions>
                   </v-form>
@@ -42,34 +42,36 @@ export default {
       credentials: {
         username: null,
         password: null,
+        
       },
     };
   },
+  methods : {
   authenticate() {
-    axios.post("http://127.0.0.1:8000/api/login/", this.credentials)
-    .then((response) => {
-        console.log(this.credentials);
-        this.$store.dispatch("updateToken", {
-            access: response.data.access,
-            refresh: response.data.refresh,
-        });
-        localStorage.setItem('access_token', response.data.access); // tokeni localStorage'a kaydet
-        this.$router.push("/");
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-},
+    axios.defaults.headers.common['Authorization'] = ''
+    localStorage.removeItem("access")
+    axios
+      .post('http://127.0.0.1:8000/api/v1/jwt/create/', this.credentials)
+      .then(response => {
+        console.log(response)
+        const access = response.data.access
+        const refresh = response.data.refresh
+        this.$store.commit('setRefresh', refresh)
 
-created() {
-    const access_token = localStorage.getItem('accessToken'); // tokeni localStorage'dan oku
-    if (access_token) {
-        console.log("accessToken")
-    } else {
-      console.log("error")
+        this.$store.commit('setAccess', access)
+        axios.defaults.headers.common['Authorization'] = "JWT" + access
 
-    }
+        localStorage.setItem("access", access)
+        localStorage.setItem("refresh", refresh)
+
+        this.$router.push("/")
+
+
+      })
 },
+  },
+
+
 
 };
 </script>

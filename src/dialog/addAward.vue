@@ -54,7 +54,7 @@
       addAward() {  
         axios.post("http://127.0.0.1:8000/api/award/", this.award)
           .then(response => {
-            this.award.pk = response.data.pk; // pk değerini API'den aldığımız değerle güncelle
+            this.award.pk = response.data.pk; 
           location.reload()
 
           })

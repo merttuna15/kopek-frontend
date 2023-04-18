@@ -8,7 +8,6 @@ import Doctor from '../views/Doctor'
 import Dog from '../views/Dog'
 import Hospital from '../views/Hospital'
 import Judge from '../views/Judge'
-import Profile from '../views/Profile'
 import Feature from '@/views/Feature'
 import Country from '@/views/Country'
 import City from '@/views/City'
@@ -65,11 +64,6 @@ export default new Router({
       name: 'Judge',
       component: Judge,
     },
-    {
-      path: '/profile',
-      name: 'Profile',
-      component: Profile,
-    }, 
     {
       path: '/feature',
       name: 'Feature',

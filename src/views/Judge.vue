@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
   <AppbarVue></AppbarVue>
   <addJudgeDialog></addJudgeDialog>
   <judgeCard></judgeCard>
@@ -18,3 +18,11 @@ export default {
   components: { AppbarVue, addJudgeDialog, judgeDataTable, judgeCard },
 };
 </script>
+
+<style>
+.page {
+  background: url("@/assets/playingdogs.jpg");
+  background-size: cover;
+  height: 100%;
+}
+</style>

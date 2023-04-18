@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <AppbarVue></AppbarVue>
     <addHospitalDialog></addHospitalDialog>
     <hospitalCard></hospitalCard>
@@ -18,3 +18,11 @@ export default {
   components: { AppbarVue, addHospitalDialog, hospitalDataTable, hospitalCard },
 };
 </script>
+
+<style>
+.page {
+  background: url("@/assets/playingdogs.jpg");
+  background-size: cover;
+  height: 100%;
+}
+</style>

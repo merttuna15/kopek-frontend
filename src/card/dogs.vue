@@ -12,7 +12,6 @@
                 </div>
                 <div v-if="dog.color">Rengi: {{ dog.color.name }}</div>
                 <div v-if="dog.size">Boyutu: {{ dog.size.name }}</div>
-                <div v-if="dog.illness">Hastalık: {{ dog.illness.name }}</div>
                 <div>Doğum Tarihi: {{ dog.birth_date }}</div>
                 <div v-if="dog.parent">Annesi: {{ dog.parent.name }}</div>
               </v-card-text>

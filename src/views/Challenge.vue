@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
   <AppbarVue></AppbarVue>
   <v-row>
   <addChallangeDialog></addChallangeDialog>
@@ -31,3 +31,11 @@ export default {
   components: { AppbarVue, addChallangeDialog, challengeDataTable,petChallengeDataTable, challengeCard, addAwardDialog, awardDataTable, addPetChallengeDialog },
 };
 </script>
+
+<style>
+.page {
+  background: url("@/assets/playingdogs.jpg");
+  background-size: cover;
+  height: 100%;
+}
+</style>

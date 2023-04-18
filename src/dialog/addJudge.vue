@@ -33,7 +33,7 @@
                       </template>
                       <v-date-picker v-model="judge.birth_date"
                         :max="new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().substr(0, 10)"
-                        min="1950-01-01" @change="handleChange"></v-date-picker>
+                        min="1950-01-01" locale="tr"></v-date-picker>
                     </v-menu>
                   </div>
                 </v-container>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-      <v-carousel hide-delimiters show-arrows="hover" width="20" height="600" class="carousel">
+      <v-carousel hide-delimiters  width="20" height="600" class="carousel">
         <v-carousel-item
           v-for="(item, i) in items"
           :key="i"

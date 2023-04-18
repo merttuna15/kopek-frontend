@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div class="page" >
       <AppbarVue></AppbarVue>
       <v-row>
       <addColorDialog></addColorDialog>
@@ -31,5 +31,9 @@
   </script>
   
   <style>
-  
+  .page {
+  background: url("@/assets/playingdogs.jpg");
+  background-size: cover;
+  height: 100%;
+}
   </style>

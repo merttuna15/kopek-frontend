@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="page">
       <AppbarVue></AppbarVue>
       <footer-vue></footer-vue>
       <addBranchDialog></addBranchDialog>
@@ -24,5 +24,9 @@
   </script>
   
   <style>
-  
+  .page {
+  background: url("@/assets/playingdogs.jpg");
+  background-size: cover;
+  height: 100vh;
+}
   </style>

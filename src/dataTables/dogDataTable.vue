@@ -3,26 +3,23 @@
     <v-col>
       <v-container>
         <v-card-title>
-          <v-text-field
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Arama"
-            single-line
-            hide-details
-          ></v-text-field>
+          <v-text-field v-model="search" append-icon="mdi-magnify" label="Arama" single-line hide-details></v-text-field>
         </v-card-title>
-        <v-data-table
-          :headers="headers"
-          :items="dogs"
-          :search="search"
-          class="elevation-10"
-          style="background-color: #F2E3DB;"
-        >
+        <v-data-table :headers="headers" :items="dogs" :search="search" class="elevation-10"
+          style="background-color: #F2E3DB;">
           <template v-slot:[`item.full_name`]="{ item }">
             <span>{{
               item.owner.first_name + " " + item.owner.last_name
             }}</span>
           </template>
+
+          <template v-slot:[`item.gadgets`]="{ item }">
+            <div>{{ [item.gadget.collet, item.gadget.dress, item.gadget.shoes].filter(Boolean).join(", ") }}</div>
+          </template>
+
+         
+
+
         </v-data-table>
       </v-container>
     </v-col>
@@ -49,7 +46,7 @@ export default {
         { text: "Doğum Tarihi", value: "birth_date" },
         { text: "Renk", value: "color.name" },
         { text: "Boyut", value: "size.name" },
-        { text: "Kıyafetler", value: "gadget.dress" },
+        { text: "Kıyafetler", value: "gadgets" },
         { text: "Hastalık", value: "illness.name" },
       ],
     };
@@ -69,6 +66,3 @@ export default {
   },
 };
 </script>
-
-<style>
-</style>

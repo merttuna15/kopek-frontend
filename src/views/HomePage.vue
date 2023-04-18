@@ -1,9 +1,11 @@
 <template>
+  <div class="page">
   <div class="car">
     <AppbarVue></AppbarVue>
     <homePageCor></homePageCor>
     <footer-vue></footer-vue>
   </div>
+</div>
 </template>
 
 <script>
@@ -24,5 +26,11 @@ export default {
   height: 400px;
   align-items: center;
   margin-left: 300px;
+}
+
+.page {
+  background: url("@/assets/playingdogs.jpg");
+  background-size: cover;
+  height: 100vh;
 }
 </style>

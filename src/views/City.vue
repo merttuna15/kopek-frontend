@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div class="page" >
       <AppbarVue></AppbarVue>
       <addCityDialog></addCityDialog>
       <cityTable></cityTable>
@@ -25,5 +25,9 @@
   </script>
   
   <style>
-  
+  .page {
+  background: url("@/assets/playingdogs.jpg");
+  background-size: cover;
+  height: 100%;
+}
   </style>

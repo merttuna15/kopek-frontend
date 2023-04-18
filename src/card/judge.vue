@@ -13,7 +13,7 @@
               <v-card-text>
                 <div v-if="judge.birth_date">Doğum Tarihi: {{ judge.birth_date }}</div>
                 <div v-if="judge.phone">Telefon No.: {{ judge.phone }}</div>
-                <div v-if="judge.email">E-mail: {{ judge.email }}</div>
+                <div v-if="judge.email">E-posta: {{ judge.email }}</div>
               </v-card-text>
             </v-card>
           </v-flex>

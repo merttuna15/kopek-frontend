@@ -56,7 +56,7 @@
       addRace() {  
         axios.post("http://127.0.0.1:8000/api/race/", this.race)
           .then(response => {
-            this.size.pk = response.data.pk; // pk değerini API'den aldığımız değerle güncelle
+            this.race.pk = response.data.pk; // pk değerini API'den aldığımız değerle güncelle
           location.reload()
 
           })
@@ -69,11 +69,7 @@
   
   </script>
   
-  <style>
-  .datetime {
-    margin-right: 50px;
-  }
-  
+  <style>  
   #btn {
     margin-top: 80px;
     justify-content: end;

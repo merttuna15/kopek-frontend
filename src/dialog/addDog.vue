@@ -39,7 +39,7 @@
                     </template>
                     <v-date-picker v-model="pet.birth_date"
                       :max="new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().substr(0, 10)"
-                      min="1950-01-01" @change="handleChange"></v-date-picker>
+                      min="1950-01-01" locale="tr"></v-date-picker>
                   </v-menu>
                 </div>
               </v-container>
@@ -122,96 +122,93 @@ export default {
     },
   },
 
+methods: {
 
+  addDog() {
+    this.pet.parent = this.pet.id || null;
+    this.pet.illness = this.pet.illness.id
 
-  methods: {
-    handleChange() {
-      // handle change logic here
-    },
-    addDog() {
-      this.pet.parent = this.pet.id || null;
-      this.pet.illness = this.pet.illness.id
-
-      axios.post("http://127.0.0.1:8000/api/pet/", this.pet, { illness: this.pet.illness })
-        .then(response => {
-          this.pet.pk = response.data.pk; // pk değerini API'den aldığımız değerle güncelle
-          location.reload()
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-    getIllness() {
-      axios
-        .get("http://127.0.0.1:8000/api/illness/", this.illness)
-        .then((response) => {
-          this.illness = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    getGadget() {
-      axios
-        .get("http://127.0.0.1:8000/api/gadgettype/", this.gadgettype)
-        .then((response) => {
-          this.gadgettype = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    getDog() {
-      axios
-        .get("http://127.0.0.1:8000/api/pet/", this.dog)
-        .then((response) => {
-          this.dog = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    getOwner() {
-      axios
-        .get("http://127.0.0.1:8000/api/owner/", this.owner)
-        .then((response) => {
-          this.owner = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    getColor() {
-      axios
-        .get("http://127.0.0.1:8000/api/color/", this.color)
-        .then((response) => {
-          this.color = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    getSize() {
-      axios
-        .get("http://127.0.0.1:8000/api/size/", this.size)
-        .then((response) => {
-          this.size = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    getRace() {
-      axios
-        .get("http://127.0.0.1:8000/api/race/", this.race)
-        .then((response) => {
-          this.race = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+    axios.post("http://127.0.0.1:8000/api/pet/", this.pet)
+      .then(response => {
+        this.pet.pk = response.data.pk; // pk değerini API'den aldığımız değerle güncelle
+        location.reload()
+      })
+      .catch(error => {
+        console.log(error);
+      });
   },
+  getIllness() {
+    axios
+      .get("http://127.0.0.1:8000/api/illness/", this.illness)
+      .then((response) => {
+        this.illness = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  getGadget() {
+    axios
+      .get("http://127.0.0.1:8000/api/gadgettype/", this.gadgettype)
+      .then((response) => {
+        this.gadgettype = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  getDog() {
+    axios
+      .get("http://127.0.0.1:8000/api/pet/", this.dog)
+      .then((response) => {
+        this.dog = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  getOwner() {
+    axios
+      .get("http://127.0.0.1:8000/api/owner/", this.owner)
+      .then((response) => {
+        this.owner = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  getColor() {
+    axios
+      .get("http://127.0.0.1:8000/api/color/", this.color)
+      .then((response) => {
+        this.color = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  getSize() {
+    axios
+      .get("http://127.0.0.1:8000/api/size/", this.size)
+      .then((response) => {
+        this.size = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  getRace() {
+    axios
+      .get("http://127.0.0.1:8000/api/race/", this.race)
+      .then((response) => {
+        this.race = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+},
+
   mounted() {
     this.getIllness();
     this.getGadget();
