@@ -25,7 +25,7 @@ export default new Router({
     routes: [
     // Routes
     {
-      path: "/login",
+      path: "/",
       name: "Login",
       component: Login,
     },
@@ -35,7 +35,7 @@ export default new Router({
       component: Register,
     },
     {
-        path: "/",
+        path: "/home",
         name: "HomePage",
         component: HomePage,
     },
